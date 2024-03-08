@@ -1,4 +1,3 @@
-
 class RememberMe:
     def __init__(self):
         self.events = {}
@@ -6,7 +5,10 @@ class RememberMe:
     def storer(self):
         date = input("Enter the date (e.g., YYYY-MM-DD): ")
         events = input("Enter events to remember separated by commas: ").split(',')
-        self.events[date] = events
+        if date in self.events:
+            self.events[date].extend(events)
+        else:
+            self.events[date] = events
 
     def checker(self):
         date = input("Enter the date you want to check (e.g., YYYY-MM-DD): ")
@@ -17,5 +19,20 @@ class RememberMe:
 
 if __name__ == "__main__":
     remember = RememberMe()
-    remember.storer()
-    remember.checker()
+    while True:
+        choice = input("Enter '1' to store events, '2' to check events,'3' to view all events, or 'q' to quit: ")
+        if choice == '1':
+            remember.storer()
+        elif choice == '2':
+            remember.checker()
+        elif choice == '3':
+            if remember.events:
+                for date, events in remember.events.items():
+                    print("Date:", date)
+                    print("Events:", ', '.join(events))
+            else:
+                print("No events stored.")
+        elif choice.lower() == 'q':
+            break
+        else:
+            print("Invalid choice. Please try again.")
