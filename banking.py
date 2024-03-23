@@ -49,8 +49,20 @@ password_input = getpass.getpass("Enter your password: ")
 # Checking which object the provided username and password belong to
 for account in total_accounts:
     if account.name == username_input and account.password == password_input:
-        print("The provided username and password belong to the following account:")
-        print(account)
+        # for task 2
+        # print("The provided username and password belong to the following account:")
+        # print(account)
+
+
+        # for task 3
+        print("Account Information:")
+        print("Username:", account.name)
+        print("Password:", account.password)
+        print("Balance:", account.balance)
+
+
         break
+
+    
 else:
     print("No account found with the provided username and password.")
