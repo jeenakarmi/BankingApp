@@ -98,6 +98,7 @@ if authenticated_account:
             authenticated_account.withdraw(amount)
             recipient_account.deposit(amount)
             print("Transfer successful!")
+            print("Your balance after withdrawal:", authenticated_account.balance)
         else:
             print("Insufficient balance.")
     else:
